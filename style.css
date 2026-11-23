@@ -7,9 +7,13 @@
   --muted: #a3a3a3;
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   margin: 0;
@@ -19,8 +23,16 @@ body {
     BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
-button, input { font: inherit; }
-button { cursor: pointer; }
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* CABEÇALHO */
 
 .topbar {
   min-height: 76px;
@@ -28,7 +40,7 @@ button { cursor: pointer; }
   align-items: center;
   gap: 34px;
   padding: 0 clamp(18px, 5vw, 72px);
-  background: rgba(8,8,8,.96);
+  background: rgba(8, 8, 8, .96);
   position: sticky;
   top: 0;
   z-index: 5;
@@ -44,7 +56,9 @@ button { cursor: pointer; }
   white-space: nowrap;
 }
 
-.brand span { color: #fff; }
+.brand span {
+  color: #fff;
+}
 
 .nav {
   display: flex;
@@ -77,6 +91,8 @@ button { cursor: pointer; }
   font-weight: 800;
 }
 
+/* DESTAQUE */
+
 .hero {
   min-height: 390px;
   padding: 65px clamp(22px, 8vw, 115px);
@@ -85,7 +101,11 @@ button { cursor: pointer; }
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(ellipse at 78% 48%, rgba(229,9,20,.23), transparent 34%),
+    radial-gradient(
+      ellipse at 78% 48%,
+      rgba(229, 9, 20, .23),
+      transparent 34%
+    ),
     linear-gradient(100deg, #191919 0%, #111 55%, #090909 100%);
   border-bottom: 1px solid #242424;
 }
@@ -145,14 +165,18 @@ button { cursor: pointer; }
   color: white;
 }
 
-.primary-button:hover { background: #ff202b; }
+.primary-button:hover {
+  background: #ff202b;
+}
 
 .secondary-button {
   background: rgba(255,255,255,.14);
   color: white;
 }
 
-.secondary-button:hover { background: rgba(255,255,255,.22); }
+.secondary-button:hover {
+  background: rgba(255,255,255,.22);
+}
 
 .hero-mark {
   position: absolute;
@@ -166,6 +190,8 @@ button { cursor: pointer; }
   font-style: italic;
   user-select: none;
 }
+
+/* BARRA DE CATÁLOGO */
 
 .toolbar {
   padding: 35px clamp(20px, 5vw, 72px) 18px;
@@ -198,7 +224,9 @@ button { cursor: pointer; }
   color: #aaa;
 }
 
-.search span { font-size: 24px; }
+.search span {
+  font-size: 24px;
+}
 
 .search input {
   width: 100%;
@@ -209,6 +237,8 @@ button { cursor: pointer; }
   outline: 0;
   font-size: 13px;
 }
+
+/* CATÁLOGO */
 
 .catalog {
   min-height: 245px;
@@ -243,7 +273,7 @@ button { cursor: pointer; }
   line-height: 1.65;
 }
 
-/* Catálogo com filmes e séries */
+/* CARDS DE FILMES E SÉRIES */
 
 .catalog.catalog-filled {
   display: block;
@@ -293,7 +323,9 @@ button { cursor: pointer; }
   font-size: 42px;
 }
 
-.title-info { padding: 13px; }
+.title-info {
+  padding: 13px;
+}
 
 .title-info h3 {
   font-size: 15px;
@@ -314,6 +346,58 @@ button { cursor: pointer; }
   margin: 9px 0 0;
 }
 
+/* SOBRE NÓS */
+
+.catalog.about-page {
+  display: block;
+  text-align: left;
+  border: 0;
+  background: transparent;
+  padding: 0;
+}
+
+.about-content {
+  width: 100%;
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 35px;
+  background: #141414;
+  border: 1px solid #292929;
+  border-radius: 12px;
+}
+
+.about-label {
+  color: var(--red);
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 2px;
+}
+
+.about-content h2 {
+  font-size: 32px;
+  margin: 12px 0 20px;
+}
+
+.about-content h3 {
+  margin-top: 25px;
+  font-size: 17px;
+}
+
+.about-content p {
+  color: #bdbdbd;
+  line-height: 1.8;
+  font-size: 14px;
+}
+
+.about-signature {
+  color: var(--red);
+  font-weight: 900;
+  font-size: 21px;
+  margin-top: 30px;
+}
+
+/* RODAPÉ */
+
 footer {
   border-top: 1px solid #222;
   padding: 28px clamp(20px, 5vw, 72px);
@@ -325,8 +409,16 @@ footer {
   font-size: 19px;
 }
 
-footer p { font-size: 13px; }
-footer small { font-size: 11px; color: #666; }
+footer p {
+  font-size: 13px;
+}
+
+footer small {
+  font-size: 11px;
+  color: #666;
+}
+
+/* JANELA SOBRE */
 
 dialog {
   width: min(430px, calc(100% - 32px));
@@ -338,8 +430,13 @@ dialog {
   box-shadow: 0 20px 80px #000;
 }
 
-dialog::backdrop { background: rgba(0,0,0,.78); }
-dialog h2 { margin: 12px 0; }
+dialog::backdrop {
+  background: rgba(0,0,0,.78);
+}
+
+dialog h2 {
+  margin: 12px 0;
+}
 
 dialog p {
   color: #bbb;
@@ -354,6 +451,8 @@ dialog p {
   color: #aaa;
   font-size: 25px;
 }
+
+/* AVISOS */
 
 .toast {
   position: fixed;
@@ -376,6 +475,8 @@ dialog p {
   transform: translate(-50%, 0);
 }
 
+/* CELULARES */
+
 @media (max-width: 650px) {
   .topbar {
     min-height: 65px;
@@ -385,7 +486,9 @@ dialog p {
     padding-bottom: 9px;
   }
 
-  .brand { font-size: 22px; }
+  .brand {
+    font-size: 22px;
+  }
 
   .nav {
     order: 3;
@@ -399,7 +502,9 @@ dialog p {
     font-size: 13px;
   }
 
-  .profile { margin-left: auto; }
+  .profile {
+    margin-left: auto;
+  }
 
   .hero {
     min-height: 350px;
@@ -417,12 +522,24 @@ dialog p {
     flex-direction: column;
   }
 
-  .search { width: 100%; }
+  .search {
+    width: 100%;
+  }
 
-  .catalog { min-height: 230px; }
+  .catalog {
+    min-height: 230px;
+  }
 
   .title-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
+  }
+
+  .about-content {
+    padding: 22px;
+  }
+
+  .about-content h2 {
+    font-size: 26px;
   }
 }
