@@ -1,3 +1,4 @@
+
 :root {
   color-scheme: dark;
   --red: #e50914;
@@ -5,116 +6,23 @@
   --panel: #171717;
   --muted: #a3a3a3;
 }
+
 * { box-sizing: border-box; }
+
 html { scroll-behavior: smooth; }
+
 body {
-  margin: 0; background: var(--bg); color: #fff;
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  margin: 0;
+  background: var(--bg);
+  color: #fff;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
+
 button, input { font: inherit; }
 button { cursor: pointer; }
+
 .topbar {
-  min-height: 76px; display: flex; align-items: center; gap: 34px;
-  padding: 0 clamp(18px, 5vw, 72px); background: rgba(8,8,8,.96);
-  position: sticky; top: 0; z-index: 5; border-bottom: 1px solid #202020;
-}
-.brand { color: var(--red); text-decoration: none; font-size: 25px; font-weight: 950; letter-spacing: -1.5px; white-space: nowrap; }
-.brand span { color: #fff; }
-.nav { display: flex; align-items: center; gap: 23px; flex: 1; }
-.nav-link { background: none; border: 0; padding: 10px 0; color: #bcbcbc; font-size: 14px; }
-.nav-link:hover, .nav-link.active { color: #fff; font-weight: 750; }
-.profile {
-  width: 36px; height: 36px; border: 0; border-radius: 7px; color: #fff;
-  background: linear-gradient(145deg, #f02b35, #8c0610); font-weight: 800;
-}
-.hero {
-  min-height: 390px; padding: 65px clamp(22px, 8vw, 115px);
-  display: flex; align-items: center; position: relative; overflow: hidden;
-  background: radial-gradient(ellipse at 78% 48%, rgba(229,9,20,.23), transparent 34%),
-              linear-gradient(100deg, #191919 0%, #111 55%, #090909 100%);
-  border-bottom: 1px solid #242424;
-}
-.hero::after {
-  content: ""; position: absolute; inset: 0;
-  background: linear-gradient(90deg, rgba(0,0,0,.15), transparent 70%);
-  pointer-events: none;
-}
-.hero-content { max-width: 560px; position: relative; z-index: 1; }
-.eyebrow, .section-kicker { color: var(--red); font-size: 11px; letter-spacing: 2.4px; font-weight: 850; }
-.hero h1 { font-size: clamp(36px, 6vw, 64px); letter-spacing: -2.5px; line-height: 1.03; margin: 15px 0; }
-.hero p { color: #c2c2c2; line-height: 1.65; max-width: 440px; }
-.hero-actions { display: flex; gap: 12px; margin-top: 25px; flex-wrap: wrap; }
-.primary-button, .secondary-button {
-  border: 0; border-radius: 5px; padding: 12px 18px; font-weight: 750;
-}
-.primary-button { background: var(--red); color: white; }
-.primary-button:hover { background: #ff202b; }
-.secondary-button { background: rgba(255,255,255,.14); color: white; }
-.secondary-button:hover { background: rgba(255,255,255,.22); }
-.hero-mark {
-  position: absolute; right: 13%; top: 50%; transform: translateY(-50%);
-  color: rgba(229,9,20,.11); font-size: clamp(180px, 30vw, 350px);
-  line-height: 1; font-weight: 1000; font-style: italic; user-select: none;
-}
-.toolbar {
-  padding: 35px clamp(20px, 5vw, 72px) 18px;
-  display: flex; justify-content: space-between; align-items: end; gap: 20px;
-}
-.section-kicker { margin: 0 0 7px; font-size: 10px; }
-.toolbar h2 { margin: 0; font-size: 25px; }
-.search {
-  display: flex; align-items: center; gap: 9px; padding: 0 13px;
-  width: min(270px, 48vw); height: 42px; border: 1px solid #393939;
-  border-radius: 5px; background: #141414; color: #aaa;
-}
-.search span { font-size: 24px; }
-.search input { width: 100%; min-width: 0; color: white; background: transparent; border: 0; outline: 0; font-size: 13px; }
-.catalog {
-  min-height: 245px; margin: 0 clamp(20px, 5vw, 72px) 55px;
-  border: 1px dashed #333; border-radius: 10px; background: #101010;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  text-align: center; padding: 35px 20px;
-}
-.empty-icon { color: #555; font-size: 43px; margin-bottom: 12px; }
-.catalog h3 { margin: 0 0 9px; font-size: 18px; }
-.catalog p { max-width: 480px; margin: 0; color: var(--muted); font-size: 13px; line-height: 1.65; }
-footer { border-top: 1px solid #222; padding: 28px clamp(20px, 5vw, 72px); color: #888; }
-.footer-brand { display: inline-block; font-size: 19px; }
-footer p { font-size: 13px; }
-footer small { font-size: 11px; color: #666; }
-dialog {
-  width: min(430px, calc(100% - 32px)); border: 1px solid #333; border-radius: 12px;
-  padding: 30px; color: white; background: #171717; box-shadow: 0 20px 80px #000;
-}
-dialog::backdrop { background: rgba(0,0,0,.78); }
-dialog h2 { margin: 12px 0; }
-dialog p { color: #bbb; line-height: 1.6; font-size: 14px; }
-.close-dialog { float: right; background: none; border: 0; color: #aaa; font-size: 25px; }
-.toast {
-  position: fixed; bottom: 22px; left: 50%; transform: translate(-50%, 20px);
-  background: #242424; color: white; padding: 11px 16px; border-radius: 6px;
-  font-size: 13px; opacity: 0; pointer-events: none; transition: .2s; z-index: 10;
-}
-.toast.show { opacity: 1; transform: translate(-50%, 0); }
-@media (max-width: 650px) {
-  .topbar { min-height: 65px; gap: 17px; flex-wrap: wrap; padding-top: 12px; padding-bottom: 9px; }
-  .brand { font-size: 22px; }
-  .nav { order: 3; width: 100%; overflow-x: auto; gap: 21px; }
-  .nav-link { white-space: nowrap; font-size: 13px; }
-  .profile { margin-left: auto; }
-  .hero { min-height: 350px; padding-top: 48px; padding-bottom: 48px; }
-  .hero-mark { right: -10%; opacity: .7; }
-  .toolbar { align-items: stretch; flex-direction: column; }
-  .search { width: 100%; }
-  .catalog { min-height: 230px; }
-}
-
-/* =================================
-   ADAPTAÇÃO DO DESIGN BLOXFLIX
-================================= */
-
-/* Cabeçalho */
-.header {
   min-height: 76px;
   display: flex;
   align-items: center;
@@ -127,32 +35,24 @@ dialog p { color: #bbb; line-height: 1.6; font-size: 14px; }
   border-bottom: 1px solid #202020;
 }
 
-.logo {
+.brand {
   color: var(--red);
+  text-decoration: none;
   font-size: 25px;
   font-weight: 950;
   letter-spacing: -1.5px;
   white-space: nowrap;
 }
 
-.navigation {
+.brand span { color: #fff; }
+
+.nav {
   display: flex;
   align-items: center;
   gap: 23px;
   flex: 1;
 }
 
-#profileButton {
-  width: 36px;
-  height: 36px;
-  border: 0;
-  border-radius: 7px;
-  color: white;
-  background: linear-gradient(145deg, #f02b35, #8c0610);
-  font-weight: 800;
-}
-
-/* Navegação */
 .nav-link {
   background: none;
   border: 0;
@@ -163,18 +63,53 @@ dialog p { color: #bbb; line-height: 1.6; font-size: 14px; }
 
 .nav-link:hover,
 .nav-link.active {
-  color: white;
+  color: #fff;
   font-weight: 750;
 }
 
-/* Banner */
+.profile {
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 7px;
+  color: #fff;
+  background: linear-gradient(145deg, #f02b35, #8c0610);
+  font-weight: 800;
+}
+
 .hero {
   min-height: 390px;
   padding: 65px clamp(22px, 8vw, 115px);
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 78% 48%, rgba(229,9,20,.23), transparent 34%),
+    linear-gradient(100deg, #191919 0%, #111 55%, #090909 100%);
+  border-bottom: 1px solid #242424;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(0,0,0,.15), transparent 70%);
+  pointer-events: none;
 }
 
 .hero-content {
   max-width: 560px;
+  position: relative;
+  z-index: 1;
+}
+
+.eyebrow,
+.section-kicker {
+  color: var(--red);
+  font-size: 11px;
+  letter-spacing: 2.4px;
+  font-weight: 850;
 }
 
 .hero h1 {
@@ -190,66 +125,146 @@ dialog p { color: #bbb; line-height: 1.6; font-size: 14px; }
   max-width: 440px;
 }
 
-#exploreButton,
-#aboutButton {
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 25px;
+  flex-wrap: wrap;
+}
+
+.primary-button,
+.secondary-button {
   border: 0;
   border-radius: 5px;
   padding: 12px 18px;
   font-weight: 750;
-  margin-top: 15px;
 }
 
-#exploreButton {
+.primary-button {
   background: var(--red);
   color: white;
 }
 
-#exploreButton:hover {
-  background: #ff202b;
-}
+.primary-button:hover { background: #ff202b; }
 
-#aboutButton {
+.secondary-button {
   background: rgba(255,255,255,.14);
   color: white;
 }
 
-/* Pesquisa */
-#searchInput {
+.secondary-button:hover { background: rgba(255,255,255,.22); }
+
+.hero-mark {
+  position: absolute;
+  right: 13%;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(229,9,20,.11);
+  font-size: clamp(180px, 30vw, 350px);
+  line-height: 1;
+  font-weight: 1000;
+  font-style: italic;
+  user-select: none;
+}
+
+.toolbar {
+  padding: 35px clamp(20px, 5vw, 72px) 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 20px;
+}
+
+.section-kicker {
+  margin: 0 0 7px;
+  font-size: 10px;
+}
+
+.toolbar h2 {
+  margin: 0;
+  font-size: 25px;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 0 13px;
   width: min(270px, 48vw);
   height: 42px;
-  padding: 0 13px;
   border: 1px solid #393939;
   border-radius: 5px;
   background: #141414;
-  color: white;
-  outline: none;
+  color: #aaa;
 }
 
-/* Catálogo */
+.search span { font-size: 24px; }
+
+.search input {
+  width: 100%;
+  min-width: 0;
+  color: white;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  font-size: 13px;
+}
+
 .catalog {
   min-height: 245px;
+  margin: 0 clamp(20px, 5vw, 72px) 55px;
+  border: 1px dashed #333;
+  border-radius: 10px;
+  background: #101010;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 35px 20px;
 }
 
-.catalog:has(.title-grid) {
+.empty-icon {
+  color: #555;
+  font-size: 43px;
+  margin-bottom: 12px;
+}
+
+.catalog h3 {
+  margin: 0 0 9px;
+  font-size: 18px;
+}
+
+.catalog p {
+  max-width: 480px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+/* Catálogo com filmes e séries */
+
+.catalog.catalog-filled {
   display: block;
+  text-align: left;
   border: 0;
   background: transparent;
-  padding: 10px 0;
+  padding: 0;
 }
 
-/* Cards dos filmes e séries */
 .title-grid {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
   gap: 22px;
-  text-align: left;
 }
 
 .title-card {
+  min-width: 0;
   overflow: hidden;
   border-radius: 9px;
-  background: #171717;
+  background: var(--panel);
   border: 1px solid #292929;
   transition: transform .2s, border-color .2s;
 }
@@ -267,9 +282,18 @@ dialog p { color: #bbb; line-height: 1.6; font-size: 14px; }
   background: #222;
 }
 
-.title-info {
-  padding: 13px;
+.title-cover-placeholder {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, #252525, #101010);
+  color: #555;
+  font-size: 42px;
 }
+
+.title-info { padding: 13px; }
 
 .title-info h3 {
   font-size: 15px;
@@ -287,19 +311,73 @@ dialog p { color: #bbb; line-height: 1.6; font-size: 14px; }
   color: var(--muted);
   font-size: 12px;
   line-height: 1.5;
-  margin-top: 9px;
+  margin: 9px 0 0;
 }
 
-/* Rodapé */
 footer {
   border-top: 1px solid #222;
   padding: 28px clamp(20px, 5vw, 72px);
   color: #888;
 }
 
-/* Celular */
+.footer-brand {
+  display: inline-block;
+  font-size: 19px;
+}
+
+footer p { font-size: 13px; }
+footer small { font-size: 11px; color: #666; }
+
+dialog {
+  width: min(430px, calc(100% - 32px));
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 30px;
+  color: white;
+  background: #171717;
+  box-shadow: 0 20px 80px #000;
+}
+
+dialog::backdrop { background: rgba(0,0,0,.78); }
+dialog h2 { margin: 12px 0; }
+
+dialog p {
+  color: #bbb;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+.close-dialog {
+  float: right;
+  background: none;
+  border: 0;
+  color: #aaa;
+  font-size: 25px;
+}
+
+.toast {
+  position: fixed;
+  bottom: 22px;
+  left: 50%;
+  transform: translate(-50%, 20px);
+  background: #242424;
+  color: white;
+  padding: 11px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  opacity: 0;
+  pointer-events: none;
+  transition: .2s;
+  z-index: 10;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
 @media (max-width: 650px) {
-  .header {
+  .topbar {
     min-height: 65px;
     gap: 17px;
     flex-wrap: wrap;
@@ -307,11 +385,9 @@ footer {
     padding-bottom: 9px;
   }
 
-  .logo {
-    font-size: 22px;
-  }
+  .brand { font-size: 22px; }
 
-  .navigation {
+  .nav {
     order: 3;
     width: 100%;
     overflow-x: auto;
@@ -323,9 +399,7 @@ footer {
     font-size: 13px;
   }
 
-  #profileButton {
-    margin-left: auto;
-  }
+  .profile { margin-left: auto; }
 
   .hero {
     min-height: 350px;
@@ -333,14 +407,19 @@ footer {
     padding-bottom: 48px;
   }
 
+  .hero-mark {
+    right: -10%;
+    opacity: .7;
+  }
+
   .toolbar {
     align-items: stretch;
     flex-direction: column;
   }
 
-  #searchInput {
-    width: 100%;
-  }
+  .search { width: 100%; }
+
+  .catalog { min-height: 230px; }
 
   .title-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
