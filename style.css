@@ -108,3 +108,242 @@ dialog p { color: #bbb; line-height: 1.6; font-size: 14px; }
   .search { width: 100%; }
   .catalog { min-height: 230px; }
 }
+
+/* =================================
+   ADAPTAÇÃO DO DESIGN BLOXFLIX
+================================= */
+
+/* Cabeçalho */
+.header {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  gap: 34px;
+  padding: 0 clamp(18px, 5vw, 72px);
+  background: rgba(8,8,8,.96);
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  border-bottom: 1px solid #202020;
+}
+
+.logo {
+  color: var(--red);
+  font-size: 25px;
+  font-weight: 950;
+  letter-spacing: -1.5px;
+  white-space: nowrap;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: 23px;
+  flex: 1;
+}
+
+#profileButton {
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 7px;
+  color: white;
+  background: linear-gradient(145deg, #f02b35, #8c0610);
+  font-weight: 800;
+}
+
+/* Navegação */
+.nav-link {
+  background: none;
+  border: 0;
+  padding: 10px 0;
+  color: #bcbcbc;
+  font-size: 14px;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: white;
+  font-weight: 750;
+}
+
+/* Banner */
+.hero {
+  min-height: 390px;
+  padding: 65px clamp(22px, 8vw, 115px);
+}
+
+.hero-content {
+  max-width: 560px;
+}
+
+.hero h1 {
+  font-size: clamp(36px, 6vw, 64px);
+  letter-spacing: -2.5px;
+  line-height: 1.03;
+  margin: 15px 0;
+}
+
+.hero p {
+  color: #c2c2c2;
+  line-height: 1.65;
+  max-width: 440px;
+}
+
+#exploreButton,
+#aboutButton {
+  border: 0;
+  border-radius: 5px;
+  padding: 12px 18px;
+  font-weight: 750;
+  margin-top: 15px;
+}
+
+#exploreButton {
+  background: var(--red);
+  color: white;
+}
+
+#exploreButton:hover {
+  background: #ff202b;
+}
+
+#aboutButton {
+  background: rgba(255,255,255,.14);
+  color: white;
+}
+
+/* Pesquisa */
+#searchInput {
+  width: min(270px, 48vw);
+  height: 42px;
+  padding: 0 13px;
+  border: 1px solid #393939;
+  border-radius: 5px;
+  background: #141414;
+  color: white;
+  outline: none;
+}
+
+/* Catálogo */
+.catalog {
+  min-height: 245px;
+}
+
+.catalog:has(.title-grid) {
+  display: block;
+  border: 0;
+  background: transparent;
+  padding: 10px 0;
+}
+
+/* Cards dos filmes e séries */
+.title-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
+  gap: 22px;
+  text-align: left;
+}
+
+.title-card {
+  overflow: hidden;
+  border-radius: 9px;
+  background: #171717;
+  border: 1px solid #292929;
+  transition: transform .2s, border-color .2s;
+}
+
+.title-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--red);
+}
+
+.title-cover {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  background: #222;
+}
+
+.title-info {
+  padding: 13px;
+}
+
+.title-info h3 {
+  font-size: 15px;
+  margin: 0 0 8px;
+}
+
+.title-info span {
+  color: var(--red);
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.title-info p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+  margin-top: 9px;
+}
+
+/* Rodapé */
+footer {
+  border-top: 1px solid #222;
+  padding: 28px clamp(20px, 5vw, 72px);
+  color: #888;
+}
+
+/* Celular */
+@media (max-width: 650px) {
+  .header {
+    min-height: 65px;
+    gap: 17px;
+    flex-wrap: wrap;
+    padding-top: 12px;
+    padding-bottom: 9px;
+  }
+
+  .logo {
+    font-size: 22px;
+  }
+
+  .navigation {
+    order: 3;
+    width: 100%;
+    overflow-x: auto;
+    gap: 21px;
+  }
+
+  .nav-link {
+    white-space: nowrap;
+    font-size: 13px;
+  }
+
+  #profileButton {
+    margin-left: auto;
+  }
+
+  .hero {
+    min-height: 350px;
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  .toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  #searchInput {
+    width: 100%;
+  }
+
+  .title-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+}
