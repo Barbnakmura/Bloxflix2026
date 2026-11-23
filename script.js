@@ -1,21 +1,12 @@
 
 // ==========================================
-// BLOXFLIX - CONEXÃO COM SUPABASE
+// BLOXFLIX - SUPABASE
 // ==========================================
 
 const SUPABASE_URL = "https://qxxdchsqrovyshsbhrle.supabase.co";
 
-// Sua chave pública (Publishable)
+// Cole sua chave Publishable do Supabase aqui.
 const SUPABASE_PUBLIC_KEY = "sb_publishable_XgCwVJQsGT3yCY0v8xJ_Kg_G6JDgybc";
-
-const supabaseClient = window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_PUBLIC_KEY
-);
-
-// ==========================================
-// ELEMENTOS
-// ==========================================
 
 const navButtons = document.querySelectorAll(".nav-link");
 const pageTitle = document.getElementById("pageTitle");
@@ -50,13 +41,93 @@ function showToast(message) {
 }
 
 // ==========================================
+// ESTADO VAZIO
+// ==========================================
+
+function showEmpty(title, description) {
+  catalog.classList.remove("catalog-filled");
+
+  catalog.innerHTML = "";
+
+  const icon = document.createElement("div");
+  icon.className = "empty-icon";
+  icon.textContent = "▣";
+
+  const heading = document.createElement("h3");
+  heading.textContent = title;
+
+  const paragraph = document.createElement("p");
+  paragraph.textContent = description;
+
+  catalog.append(icon, heading, paragraph);
+}
+
+// ==========================================
+// CRIAR CARD
+// ==========================================
+
+function createCard(item) {
+  const card = document.createElement("article");
+  card.className = "title-card";
+
+  if (item.cover_url) {
+    const cover = document.createElement("img");
+
+    cover.className = "title-cover";
+    cover.alt = item.title || "Capa do título";
+    cover.loading = "lazy";
+    cover.src = item.cover_url;
+
+    cover.onerror = () => {
+      const placeholder = document.createElement("div");
+      placeholder.className = "title-cover-placeholder";
+      placeholder.textContent = "▣";
+      cover.replaceWith(placeholder);
+    };
+
+    card.appendChild(cover);
+  } else {
+    const placeholder = document.createElement("div");
+    placeholder.className = "title-cover-placeholder";
+    placeholder.textContent = "▣";
+    card.appendChild(placeholder);
+  }
+
+  const info = document.createElement("div");
+  info.className = "title-info";
+
+  const name = document.createElement("h3");
+  name.textContent = item.title || "Sem título";
+
+  const type = document.createElement("span");
+  type.textContent =
+    item.kind === "series" ? "Série" : "Filme";
+
+  const description = document.createElement("p");
+  description.textContent = item.description || "";
+
+  info.append(name, type, description);
+  card.appendChild(info);
+
+  return card;
+}
+
+// ==========================================
 // MOSTRAR CATÁLOGO
 // ==========================================
 
 function renderCatalog() {
   const search = searchInput.value.trim().toLowerCase();
 
-  let filtered = titles.filter(item => {
+  if (currentPage === "lista") {
+    showEmpty(
+      "Sua lista está vazia.",
+      "Em breve você poderá salvar seus títulos favoritos."
+    );
+    return;
+  }
+
+  const filtered = titles.filter(item => {
     const matchesSearch = (item.title || "")
       .toLowerCase()
       .includes(search);
@@ -69,87 +140,84 @@ function renderCatalog() {
     return matchesSearch && matchesPage;
   });
 
-  if (currentPage === "lista") {
-    catalog.innerHTML = `
-      <div class="empty-icon">▣</div>
-      <h3>Minha lista está vazia.</h3>
-      <p>Em breve você poderá salvar seus títulos favoritos.</p>
-    `;
-    return;
-  }
-
   if (filtered.length === 0) {
-    catalog.innerHTML = `
-      <div class="empty-icon">▣</div>
-      <h3>${search ? "Nenhum resultado encontrado." : "Seu catálogo está esperando por você."}</h3>
-      <p>${search ? "Tente pesquisar por outro nome." : "Os títulos adicionados ao Bloxflix aparecerão aqui."}</p>
-    `;
+    if (search) {
+      showEmpty(
+        "Nenhum resultado encontrado.",
+        "Tente pesquisar por outro nome."
+      );
+    } else {
+      showEmpty(
+        "Seu catálogo está esperando por você.",
+        "Os títulos adicionados ao Bloxflix aparecerão aqui."
+      );
+    }
+
     return;
   }
 
   catalog.innerHTML = "";
+  catalog.classList.add("catalog-filled");
 
   const grid = document.createElement("div");
   grid.className = "title-grid";
 
   filtered.forEach(item => {
-    const card = document.createElement("article");
-    card.className = "title-card";
-
-    const cover = document.createElement("img");
-    cover.className = "title-cover";
-    cover.alt = item.title || "Capa";
-    cover.src = item.cover_url || "";
-
-    cover.onerror = () => {
-      cover.style.display = "none";
-    };
-
-    const info = document.createElement("div");
-    info.className = "title-info";
-
-    const name = document.createElement("h3");
-    name.textContent = item.title || "Sem título";
-
-    const type = document.createElement("span");
-    type.textContent =
-      item.kind === "series" ? "Série" : "Filme";
-
-    const description = document.createElement("p");
-    description.textContent = item.description || "";
-
-    info.append(name, type, description);
-    card.append(cover, info);
-    grid.appendChild(card);
+    grid.appendChild(createCard(item));
   });
 
   catalog.appendChild(grid);
 }
 
 // ==========================================
-// BUSCAR TÍTULOS NO SUPABASE
+// CARREGAR DADOS DO SUPABASE
 // ==========================================
 
 async function loadTitles() {
-  catalog.innerHTML = "<p>Carregando catálogo...</p>";
+  if (!window.supabase) {
+    showEmpty(
+      "Biblioteca não carregada.",
+      "Não foi possível carregar a conexão com o Supabase."
+    );
+    return;
+  }
+
+  if (
+    !SUPABASE_PUBLIC_KEY.startsWith("sb_publishable_") ||
+    SUPABASE_PUBLIC_KEY === "COLE_SUA_PUBLISHABLE_KEY_AQUI"
+  ) {
+    showEmpty(
+      "Chave não configurada.",
+      "Confira a chave Publishable no script.js."
+    );
+    return;
+  }
+
+  const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLIC_KEY
+  );
+
+  showEmpty("Carregando catálogo...", "Buscando filmes e séries.");
 
   const { data, error } = await supabaseClient
     .from("titles")
-    .select("id,title,description,cover_url,kind,video_url")
+    .select("id,title,description,cover_url,kind,video_url,created_at")
     .order("created_at", { ascending: false });
 
   if (error) {
-    console.error("Erro ao carregar títulos:", error);
+    console.error("Erro do Supabase:", error);
 
-    catalog.innerHTML = `
-      <div class="empty-icon">!</div>
-      <h3>Não foi possível carregar o catálogo.</h3>
-      <p>Verifique as permissões do Supabase.</p>
-    `;
+    showEmpty(
+      "Não foi possível carregar o catálogo.",
+      "Verifique as permissões de leitura da tabela titles no Supabase."
+    );
+
     return;
   }
 
   titles = data || [];
+
   renderCatalog();
 }
 
@@ -213,7 +281,7 @@ document.getElementById("profileButton")
   });
 
 // ==========================================
-// INICIAR
+// INICIAR BLOXFLIX
 // ==========================================
 
 loadTitles();
