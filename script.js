@@ -6,7 +6,7 @@
 const SUPABASE_URL = "https://qxxdchsqrovyshsbhrle.supabase.co";
 
 // MANTENHA A SUA CHAVE PUBLISHABLE ATUAL AQUI
-const SUPABASE_PUBLIC_KEY = "COLE_SUA_PUBLISHABLE_KEY_AQUI";
+const SUPABASE_PUBLIC_KEY = "sb_publishable_XgCwVJQsGT3yCY0v8xJ_Kg_G6JDgybc";
 
 // ==========================================
 // ELEMENTOS
