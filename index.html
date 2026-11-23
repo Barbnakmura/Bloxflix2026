@@ -10,14 +10,18 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
   <header class="topbar">
-    <a class="brand" href="#" aria-label="Bloxflix início">BLOX<span>FLIX</span></a>
+    <a class="brand" href="#" aria-label="Bloxflix início">
+      BLOX<span>FLIX</span>
+    </a>
 
     <nav class="nav" aria-label="Navegação principal">
       <button class="nav-link active" data-page="inicio">Início</button>
       <button class="nav-link" data-page="series">Séries</button>
       <button class="nav-link" data-page="filmes">Filmes</button>
       <button class="nav-link" data-page="lista">Minha lista</button>
+      <button class="nav-link" data-page="sobre">Sobre nós</button>
     </nav>
 
     <button class="profile" id="profileButton" aria-label="Perfil">B</button>
@@ -28,11 +32,19 @@
       <div class="hero-content">
         <span class="eyebrow">BLOXFLIX ORIGINAL</span>
         <h1>Histórias começam aqui.</h1>
-        <p>Filmes, séries e universos incríveis. Tudo em um só lugar.</p>
+        <p>
+          Filmes, séries e universos incríveis.
+          Tudo em um só lugar.
+        </p>
 
         <div class="hero-actions">
-          <button class="primary-button" id="exploreButton">▶ Explorar catálogo</button>
-          <button class="secondary-button" id="aboutButton">ⓘ Sobre</button>
+          <button class="primary-button" id="exploreButton">
+            ▶ Explorar catálogo
+          </button>
+
+          <button class="secondary-button" id="aboutButton">
+            ⓘ Sobre nós
+          </button>
         </div>
       </div>
 
@@ -47,35 +59,52 @@
 
       <label class="search">
         <span aria-hidden="true">⌕</span>
-        <input id="searchInput" type="search"
-          placeholder="Buscar títulos..." autocomplete="off">
+        <input
+          id="searchInput"
+          type="search"
+          placeholder="Buscar títulos..."
+          autocomplete="off"
+        >
       </label>
     </section>
 
     <section class="catalog" id="catalog">
       <div class="empty-icon" aria-hidden="true">▣</div>
-      <h3 id="emptyTitle">Seu catálogo está esperando por você.</h3>
-      <p id="emptyText">Ainda não há filmes ou séries por aqui. Quando os títulos forem adicionados, eles aparecerão nesta área.</p>
+      <h3>Carregando catálogo...</h3>
+      <p>Estamos preparando tudo para você.</p>
     </section>
   </main>
 
   <footer>
-    <a class="brand footer-brand" href="#">BLOX<span>FLIX</span></a>
+    <a class="brand footer-brand" href="#">
+      BLOX<span>FLIX</span>
+    </a>
+
     <p>Seu próximo universo favorito começa aqui.</p>
+
     <small>© 2026 Bloxflix. Projeto independente.</small>
   </footer>
 
   <dialog id="infoDialog">
     <button class="close-dialog" id="closeDialog" aria-label="Fechar">×</button>
+
     <span class="eyebrow">BLOXFLIX</span>
-    <h2>Seu espaço de entretenimento.</h2>
-    <p>Este é o começo do Bloxflix. O catálogo está pronto para receber seus filmes e séries favoritos.</p>
-    <button class="primary-button" id="dialogOk">Entendi</button>
+    <h2>Histórias começam aqui.</h2>
+
+    <p>
+      A Bloxflix nasceu de uma ideia e continua crescendo
+      com criatividade, projetos e entretenimento.
+    </p>
+
+    <button class="primary-button" id="dialogOk">
+      Entendi
+    </button>
   </dialog>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
   <script src="script.js"></script>
+
 </body>
 </html>
