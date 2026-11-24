@@ -381,3 +381,15 @@ document.getElementById("profileButton")
 // ==========================================
 
 loadTitles();
+// ==========================================
+// INSTALAR COMO APLICATIVO (PWA)
+// ==========================================
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker
+      .register("./service-worker.js")
+      .then(() => console.log("Bloxflix PWA registrado!"))
+      .catch(error => console.error("Erro ao registrar PWA:", error));
+  });
+}
